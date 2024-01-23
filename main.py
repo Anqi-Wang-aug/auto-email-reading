@@ -38,8 +38,9 @@ def get_att(msg, fpath):
         else: print('Not attachment')
     return attachment_files
 
-my_email = 'email@email.com'#改成你的邮箱
-password = '*****' #改成你的密码              
+
+my_email = input('Enter your email: ')
+password = input('Password: ')          
 pop3_server = 'pop.outlook.com'  
 
 PATH = 'C:\\Users\\Huawei\\Downloads\\'
@@ -71,7 +72,7 @@ for m in msg_list:
     msg_content = b'\r\n'.join(lines).decode('utf-8')
     msg = Parser().parsestr(msg_content)
     get_att(msg, PATH)
-    imap.store(m, '+FLAGS', '\\Deleted')
+    imap.store(m, '+FLAGS', '\\Read')
 
 imap.close()
 imap.logout()
